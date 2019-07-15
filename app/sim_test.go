@@ -62,10 +62,10 @@ func init() {
 // helper function for populating input for SimulateFromSeed
 func getSimulateFromSeedInput(tb testing.TB, w io.Writer, app *GaiaApp) (
 	testing.TB, io.Writer, *baseapp.BaseApp, simulation.AppStateFn, int64,
-	simulation.WeightedOperations, sdk.Invariants, int, int, bool, bool, bool) {
+	simulation.WeightedOperations, sdk.Invariants, int, int, bool, bool, booli, map[string]bool) {
 
 	return tb, w, app.BaseApp, appStateFn, seed,
-		testAndRunTxs(app), invariants(app), numBlocks, blockSize, commit, lean, onOperation
+		testAndRunTxs(app), invariants(app), numBlocks, blockSize, commit, lean, onOperation, app.BlackListedAccs()
 }
 
 func appStateFn(
